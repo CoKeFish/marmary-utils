@@ -8,6 +8,10 @@ using System;
 
 using System.Collections.Generic;
 
+#if UNITY_2021_2_OR_NEWER
+using UnityEditor.Build;
+#endif
+
 namespace MyCompany.ModuleSymbols
 
 {
@@ -63,9 +67,13 @@ namespace MyCompany.ModuleSymbols
 
             const string DEFAULT_SYMBOL = "MODULE_SYMBOLS_SYSTEM_ENABLED";
 
+#if UNITY_2021_2_OR_NEWER
+            var buildTarget = NamedBuildTarget.FromBuildTargetGroup(EditorUserBuildSettings.selectedBuildTargetGroup);
+            string defines = PlayerSettings.GetScriptingDefineSymbols(buildTarget);
+#else
             var group = EditorUserBuildSettings.selectedBuildTargetGroup;
-
             string defines = PlayerSettings.GetScriptingDefineSymbolsForGroup(group);
+#endif
 
             var list = new HashSet<string>(defines.Split(new[]{';'}, StringSplitOptions.RemoveEmptyEntries));
 
@@ -77,7 +85,11 @@ namespace MyCompany.ModuleSymbols
 
                 string newDefines = string.Join(";", list);
 
+#if UNITY_2021_2_OR_NEWER
+                PlayerSettings.SetScriptingDefineSymbols(buildTarget, newDefines);
+#else
                 PlayerSettings.SetScriptingDefineSymbolsForGroup(group, newDefines);
+#endif
 
             }
 
@@ -135,9 +147,13 @@ namespace MyCompany.ModuleSymbols
 
         {
 
+#if UNITY_2021_2_OR_NEWER
+            var buildTarget = NamedBuildTarget.FromBuildTargetGroup(EditorUserBuildSettings.selectedBuildTargetGroup);
+            string defines = PlayerSettings.GetScriptingDefineSymbols(buildTarget);
+#else
             var group = EditorUserBuildSettings.selectedBuildTargetGroup;
-
             string defines = PlayerSettings.GetScriptingDefineSymbolsForGroup(group);
+#endif
 
             var list = new HashSet<string>(defines.Split(new[]{';'}, StringSplitOptions.RemoveEmptyEntries));
 
@@ -161,7 +177,11 @@ namespace MyCompany.ModuleSymbols
 
             string newDefines = string.Join(";", list);
 
+#if UNITY_2021_2_OR_NEWER
+            PlayerSettings.SetScriptingDefineSymbols(buildTarget, newDefines);
+#else
             PlayerSettings.SetScriptingDefineSymbolsForGroup(group, newDefines);
+#endif
 
             Debug.Log("Updated scripting define symbols: " + newDefines);
 
