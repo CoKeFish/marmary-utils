@@ -36,6 +36,9 @@ namespace MyCompany.ModuleSymbols
 
         {
 
+            // Asegurar que MODULE_SYMBOLS_SYSTEM_ENABLED esté definido por defecto
+            EnsureDefaultSymbol();
+
             // inicializar estados
 
             foreach (var desc in ModuleSymbolRegistry.Descriptors)
@@ -49,6 +52,32 @@ namespace MyCompany.ModuleSymbols
                     _state[opt.symbol] = EditorPrefs.GetBool("SYM_"+opt.symbol, opt.enabledByDefault);
 
                 }
+
+            }
+
+        }
+
+        void EnsureDefaultSymbol()
+
+        {
+
+            const string DEFAULT_SYMBOL = "MODULE_SYMBOLS_SYSTEM_ENABLED";
+
+            var group = EditorUserBuildSettings.selectedBuildTargetGroup;
+
+            string defines = PlayerSettings.GetScriptingDefineSymbolsForGroup(group);
+
+            var list = new HashSet<string>(defines.Split(new[]{';'}, StringSplitOptions.RemoveEmptyEntries));
+
+            if (!list.Contains(DEFAULT_SYMBOL))
+
+            {
+
+                list.Add(DEFAULT_SYMBOL);
+
+                string newDefines = string.Join(";", list);
+
+                PlayerSettings.SetScriptingDefineSymbolsForGroup(group, newDefines);
 
             }
 

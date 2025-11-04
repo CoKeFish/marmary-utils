@@ -9,9 +9,9 @@ namespace MyCompany.ModuleSymbols.Examples
 {
 
     // Ejemplo de módulo registrando sus símbolos
-    // Este registro solo se ejecutará si MODULE_A está definido
+    // Este registro solo se ejecutará si MODULE_SYMBOLS_SYSTEM_ENABLED está definido
 
-#if MODULE_A
+#if MODULE_SYMBOLS_SYSTEM_ENABLED
 
     [InitializeOnLoad]
 
