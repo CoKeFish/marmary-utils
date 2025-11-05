@@ -1,6 +1,6 @@
 {
   "name": "com.marmary.utils",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "displayName": "Marmary Utils",
   "description": "Utility package for Unity including Module Symbols Manager and other utilities.",
   "unity": "2020.3",
