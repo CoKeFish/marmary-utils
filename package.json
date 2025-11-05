@@ -1,13 +1,13 @@
 ﻿{
   "name": "com.marmary.utils",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "displayName": "Marmary Utils",
   "description": "Utility package for Unity including Module Symbols Manager and other utilities.",
   "unity": "2020.3",
   "unityRelease": "0f1",
   "type": "tool",
   "author": {
-    "name": "RodiÃ³n Romanovich Tabares Correa",
+    "name": "Rodión Romanovich Tabares Correa",
     "email": "rrtc26@gmail.com"
   },
   "keywords": [
