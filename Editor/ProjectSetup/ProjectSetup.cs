@@ -23,7 +23,7 @@ public static class ProjectSetup {
     public static void InstallPackages() {
         Packages.InstallPackages(new[] {
             "git+https://github.com/GlitchEnzo/NuGetForUnity.git?path=/src/NuGetForUnity",
-            "git+https://github.com/CoKeFish/VFolders.git",
+            //"git+https://github.com/CoKeFish/VFolders.git",
             //"git+https://github.com/CoKeFish/vHierarchy.git",
             "git+https://github.com/CoKeFish/LogSystem-Unity.git",
             "git+https://github.com/CoKeFish/StateBehaviour-Unity.git",
