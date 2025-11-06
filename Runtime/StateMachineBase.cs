@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if STATE_MACHINE_BASE_ENABLED
+using System;
 using Stateless;
 using Stateless.Graph;
 
@@ -60,3 +61,4 @@ namespace Marmary.StateBehavior
         #endregion
     }
 }
+#endif
