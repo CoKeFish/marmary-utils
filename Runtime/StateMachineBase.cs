@@ -58,6 +58,27 @@ namespace Marmary.StateBehavior
             StateMachine.Fire(trigger);
         }
 
+        /// <summary>
+        ///     Gets the current state managed by the state machine.
+        /// </summary>
+        public TState CurrentState => StateMachine.State;
+
+        /// <summary>
+        ///     Checks whether the supplied trigger can be fired from the current state.
+        /// </summary>
+        /// <param name="trigger">Trigger to evaluate.</param>
+        /// <returns><c>true</c> if the trigger is valid in the current state.</returns>
+        public bool CanFire(TTrigger trigger)
+        {
+            return StateMachine.CanFire(trigger);
+        }
+
+        /// <summary>
+        /// Executes all actions or events configured for the current state of the state machine.
+        /// </summary>
+        protected abstract void ExecuteActions();
+
+
         #endregion
     }
 }
