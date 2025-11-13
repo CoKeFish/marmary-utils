@@ -1,8 +1,7 @@
 #if UNITY_EDITOR
 
+using Marmary.Utils.Editor.ModuleSymbols;
 using UnityEditor;
-
-using MyCompany.ModuleSymbols;
 
 namespace Marmary.Utils
 
@@ -27,9 +26,9 @@ namespace Marmary.Utils
 
             {
 
-                moduleName = "Utils",
+                ModuleName = "Utils",
 
-                options = new SymbolOption[]
+                Options = new SymbolOption[]
 
                 {
 
