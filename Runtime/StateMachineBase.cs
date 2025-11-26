@@ -72,13 +72,7 @@ namespace Marmary.StateBehavior
         {
             return StateMachine.CanFire(trigger);
         }
-
-        /// <summary>
-        /// Executes all actions or events configured for the current state of the state machine.
-        /// </summary>
-        protected abstract void ExecuteActions();
-
-
+        
         #endregion
     }
 }
