@@ -21,6 +21,16 @@ namespace Marmary.StateBehavior
 
         #endregion
 
+        #region Properties
+
+        /// <summary>
+        ///     Gets the current state managed by the state machine.
+        /// </summary>
+        public TState CurrentState => StateMachine.State;
+
+        #endregion
+
+        #region Constructors and Injected
 
         /// <summary>
         ///     State machine basic configuration
@@ -30,6 +40,8 @@ namespace Marmary.StateBehavior
         {
             StateMachine = new StateMachine<TState, TTrigger>(initialState);
         }
+
+        #endregion
 
         #region Methods
 
@@ -43,12 +55,6 @@ namespace Marmary.StateBehavior
             return UmlDotGraph.Format(StateMachine.GetInfo());
         }
 
-
-        /// <summary>
-        ///     Configures the state machine
-        /// </summary>
-        protected abstract void ConfigureStateMachine();
-
         /// <summary>
         ///     Fires a trigger to transition the state machine to the next state.
         /// </summary>
@@ -59,11 +65,6 @@ namespace Marmary.StateBehavior
         }
 
         /// <summary>
-        ///     Gets the current state managed by the state machine.
-        /// </summary>
-        public TState CurrentState => StateMachine.State;
-
-        /// <summary>
         ///     Checks whether the supplied trigger can be fired from the current state.
         /// </summary>
         /// <param name="trigger">Trigger to evaluate.</param>
@@ -72,7 +73,13 @@ namespace Marmary.StateBehavior
         {
             return StateMachine.CanFire(trigger);
         }
-        
+
+
+        /// <summary>
+        ///     Configures the state machine
+        /// </summary>
+        protected abstract void ConfigureStateMachine();
+
         #endregion
     }
 }
