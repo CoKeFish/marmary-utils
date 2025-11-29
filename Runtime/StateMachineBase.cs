@@ -17,7 +17,7 @@ namespace Marmary.StateBehavior
         /// <summary>
         ///     State machine
         /// </summary>
-        protected readonly StateMachine<TState, TTrigger> StateMachine;
+        protected readonly StateMachine<TState, TTrigger> stateMachine;
 
         #endregion
 
@@ -26,7 +26,7 @@ namespace Marmary.StateBehavior
         /// <summary>
         ///     Gets the current state managed by the state machine.
         /// </summary>
-        public TState CurrentState => StateMachine.State;
+        public TState CurrentState => stateMachine.State;
 
         #endregion
 
@@ -38,7 +38,7 @@ namespace Marmary.StateBehavior
         /// <param name="initialState"></param>
         protected StateMachineBase(TState initialState)
         {
-            StateMachine = new StateMachine<TState, TTrigger>(initialState);
+            stateMachine = new StateMachine<TState, TTrigger>(initialState);
         }
 
         #endregion
@@ -52,7 +52,7 @@ namespace Marmary.StateBehavior
         /// <returns>A string containing the DOT graph representation of the state machine.</returns>
         public string ToDotGraph()
         {
-            return UmlDotGraph.Format(StateMachine.GetInfo());
+            return UmlDotGraph.Format(stateMachine.GetInfo());
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace Marmary.StateBehavior
         /// <param name="trigger">The trigger to fire.</param>
         public virtual void FireTrigger(TTrigger trigger)
         {
-            StateMachine.Fire(trigger);
+            stateMachine.Fire(trigger);
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace Marmary.StateBehavior
         /// <returns><c>true</c> if the trigger is valid in the current state.</returns>
         public bool CanFire(TTrigger trigger)
         {
-            return StateMachine.CanFire(trigger);
+            return stateMachine.CanFire(trigger);
         }
 
 
