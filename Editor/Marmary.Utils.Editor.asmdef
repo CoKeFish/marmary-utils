@@ -1,3 +1,16 @@
 ﻿{
-  "name": "Marmary.Utils.Editor"
+    "name": "Marmary.Utils.Editor",
+    "rootNamespace": "Marmary",
+    "references": [],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }
