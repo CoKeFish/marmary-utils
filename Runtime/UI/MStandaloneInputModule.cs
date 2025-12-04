@@ -1,7 +1,9 @@
 ﻿using Marmary.Utils.Runtime.Events;
+using Marmary.Utils.Runtime.Structure;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.UI;
+using VContainer;
 
 namespace Marmary.Utils.Runtime.UI
 {
@@ -45,7 +47,29 @@ namespace Marmary.Utils.Runtime.UI
             /// </summary>
             private GameObject _lastSelected;
 
+            /// <summary>
+            /// An instance of a class implementing the <see cref="IEventBus" /> interface, used for managing
+            /// event-driven communication and decoupling dependencies within the application.
+            /// </summary>
+            /// <remarks>
+            /// This instance is resolved and injected by the VContainer dependency injection framework.
+            /// It allows the <see cref="MStandaloneInputModule" /> to publish and subscribe to events
+            /// related to UI navigation and interaction behavior.
+            /// </remarks>
+            [Inject] private IEventBus _eventBus;
+
             #endregion
+
+            protected override void Start()
+            {
+                base.Start();
+                _eventBus.Subscribe<SendMenuManagerEvent>(asignMenuManager);
+            }
+
+            private void asignMenuManager(SendMenuManagerEvent eventData)
+            {
+                menuManager = eventData.MenuManager;
+            }
 
             #region Methods
 

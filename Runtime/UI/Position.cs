@@ -1,9 +1,12 @@
-﻿#if STATE_BEHAVIOR_ENABLED
+﻿using System;
+
+#if STATE_BEHAVIOR_ENABLED
 namespace Marmary.Utils.Runtime
 {
     /// <summary>
     ///     Represents the position to the right where an element can be hidden.
     /// </summary>
+    [Serializable]
     public enum Position
     {
         /// <summary>
