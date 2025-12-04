@@ -1,7 +1,7 @@
 ﻿using UnityEngine.EventSystems;
 using UExecuteEvents = UnityEngine.EventSystems.ExecuteEvents; // Alias
 
-namespace Marmary.Libraries.UI.Events
+namespace Marmary.Utils.Runtime.Events
 {
     /// <summary>
     ///     This class is used to call the events of the interfaces.

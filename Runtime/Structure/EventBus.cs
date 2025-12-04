@@ -3,9 +3,8 @@ using DTT.ExtendedDebugLogs;
 using MessagePipe;
 using VContainer;
 
-namespace Marmary.Libraries.Structure
+namespace Marmary.Utils.Runtime.Structure
 {
-
     /// <summary>
     ///     Interface for an event bus that allows publishing and subscribing to messages of a specific type.
     /// </summary>
@@ -46,6 +45,8 @@ namespace Marmary.Libraries.Structure
 
         #endregion
 
+        #region Constructors and Injected
+
         /// <summary>
         ///     Initializes a new instance of the EventBus class.
         /// </summary>
@@ -54,6 +55,8 @@ namespace Marmary.Libraries.Structure
         {
             _resolver = resolver;
         }
+
+        #endregion
 
         #region IEventBus Members
 
@@ -86,16 +89,18 @@ namespace Marmary.Libraries.Structure
 
 
     /// <summary>
-    /// Provides a filter for handling and logging the processing of events in the message pipeline.
-    /// Logs the start and end of event handling for messages of the specified type.
+    ///     Provides a filter for handling and logging the processing of events in the message pipeline.
+    ///     Logs the start and end of event handling for messages of the specified type.
     /// </summary>
     /// <typeparam name="T">
-    /// The type of the message being handled by this filter.
+    ///     The type of the message being handled by this filter.
     /// </typeparam>
     public class LoggingFilter<T> : MessageHandlerFilter<T>
     {
+        #region Methods
+
         /// <summary>
-        /// Processes a message by applying the current filter logic and passing it to the next handler.
+        ///     Processes a message by applying the current filter logic and passing it to the next handler.
         /// </summary>
         /// <param name="message">The message that is being processed.</param>
         /// <param name="next">The next action in the processing pipeline, which is invoked after the filter logic is applied.</param>
@@ -105,5 +110,7 @@ namespace Marmary.Libraries.Structure
             next(message);
             DebugEx.Log($"END: Event {typeof(T).Name}", FlowControlTag.Event);
         }
+
+        #endregion
     }
 }

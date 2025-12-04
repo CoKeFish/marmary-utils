@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Marmary.Libraries.Extention.Odin
+namespace Marmary.Utils.Runtime.Extention.Odin
 {
     /// <summary>
     ///     Attribute used to mark a method for selecting a list item.

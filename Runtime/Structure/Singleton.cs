@@ -4,7 +4,7 @@ using Sirenix.OdinInspector;
 using Sirenix.Utilities;
 using UnityEngine;
 
-namespace Marmary.Libraries.Structure
+namespace Marmary.Utils.Runtime.Structure
 {
     /// <summary>
     ///     A static instance of a MonoBehaviour is similar to a singleton, but instead
@@ -91,21 +91,39 @@ namespace Marmary.Libraries.Structure
         #endregion
     }
 
+    /// <summary>
+    /// Provides a base class for implementing singleton pattern with ScriptableObjects,
+    /// ensuring a single instance is used throughout the application lifecycle.
+    /// This class simplifies access to a shared instance of a ScriptableObject
+    /// by automatically loading or finding it at runtime when accessed for the first time.
+    /// </summary>
+    /// <typeparam name="T">
+    /// The type of the ScriptableObject that will be treated as a singleton instance.
+    /// </typeparam>
     public abstract class SingletonScriptableObject<T> : SerializedScriptableObject where T : SerializedScriptableObject
     {
-        private static T instance;
+        /// <summary>
+        /// Provides access to the singleton instance of the specified type.
+        /// Ensures that only one instance of the object exists and provides a global point of access to it.
+        /// </summary>
+        private static T _instance;
 
         #region Properties
 
+        /// <summary>
+        /// Gets the singleton instance of the class.
+        /// This property provides global access to the single instance of the type,
+        /// ensuring that only one instance of the object exists during the application lifecycle.
+        /// </summary>
         public static T Instance
         {
             get
             {
-                if (instance != null) return instance;
+                if (_instance != null) return _instance;
 
-                instance = Resources.FindObjectsOfTypeAll<T>().FirstOrDefault();
-                if (instance == null) Debug.LogError($"No instance of {typeof(T)} found in resources.");
-                return instance;
+                _instance = Resources.FindObjectsOfTypeAll<T>().FirstOrDefault();
+                if (_instance == null) Debug.LogError($"No instance of {typeof(T)} found in resources.");
+                return _instance;
             }
         }
 
@@ -113,43 +131,79 @@ namespace Marmary.Libraries.Structure
     }
 
 
+    /// <summary>
+    /// An abstract base class for managing globally accessible serialized configuration assets in Unity.
+    /// It ensures that the configuration is loaded and accessible throughout the application,
+    /// with support for automatic asset initialization and lifecycle management.
+    /// Classes derived from this type represent specific configuration assets.
+    /// </summary>
+    /// <typeparam name="T">
+    /// The derived type of <see cref="SerializedGlobalConfig{T}"/>.
+    /// The derived type must inherit from <see cref="SerializedGlobalConfig{T}"/> and provide its own implementation.
+    /// </typeparam>
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
     [SuppressMessage("ReSharper", "VirtualMemberNeverOverridden.Global")]
     public abstract class SerializedGlobalConfig<T> : SerializedScriptableObject, IGlobalConfigEvents
         where T : SerializedGlobalConfig<T>, new()
     {
         // ReSharper disable once StaticMemberInGenericType
-        private static GlobalConfigAttribute configAttribute;
-        private static T instance;
+        /// <summary>
+        /// Represents a configuration attribute that stores metadata or settings
+        /// applicable to a specific functionality or component.
+        /// </summary>
+        private static GlobalConfigAttribute _configAttribute;
+
+        /// <summary>
+        /// Represents the static instance of the configuration or object tied to the Singleton pattern, ensuring a single, globally accessible instance throughout the application lifecycle.
+        /// </summary>
+        private static T _instance;
 
         #region Properties
 
+        /// <summary>
+        /// Indicates whether the instance has been loaded successfully.
+        /// </summary>
         public static bool HasInstanceLoaded => GlobalConfigUtility<T>.HasInstanceLoaded;
 
+        /// <summary>
+        /// Represents a configuration attribute used to define metadata
+        /// or settings associated with a specific configuration entry.
+        /// </summary>
         private static GlobalConfigAttribute ConfigAttribute
         {
             get
             {
-                if (configAttribute != null) return configAttribute;
+                if (_configAttribute != null) return _configAttribute;
 
-                configAttribute = typeof(T).GetCustomAttribute<GlobalConfigAttribute>() ??
+                _configAttribute = typeof(T).GetCustomAttribute<GlobalConfigAttribute>() ??
                                   new GlobalConfigAttribute(typeof(T).GetNiceName());
-                return configAttribute;
+                return _configAttribute;
             }
         }
 
+        /// <summary>
+        /// Gets the singleton instance of the class.
+        /// </summary>
         public static T Instance => GlobalConfigUtility<T>.GetInstance(ConfigAttribute.AssetPath);
 
         #endregion
 
         #region Methods
 
+        /// <summary>
+        /// Opens the configuration asset in the Unity Editor.
+        /// Logs a placeholder message indicating an attempt to launch and open the config window in the editor.
+        /// </summary>
         public void OpenInEditor()
         {
             Debug.Log(
                 "Downloading, installing and launching the Unity Editor so we can open this config window in the editor, please stand by until pigs can fly and hell has frozen over...");
         }
 
+        /// <summary>
+        /// Attempts to load an instance of the asset if it exists.
+        /// Ensures that the required asset is initialized and accessible.
+        /// </summary>
         public static void LoadInstanceIfAssetExists()
         {
             //GlobalConfigUtility<T>.LoadInstanceIfAssetExists(SerializedGlobalConfig<T>.ConfigAttribute.AssetPath);
@@ -160,10 +214,18 @@ namespace Marmary.Libraries.Structure
 
         #region Event Functions
 
+        /// <summary>
+        /// Triggered the first time the configuration instance is accessed.
+        /// Used to perform initialization or setup tasks specific to the configuration lifecycle.
+        /// </summary>
         protected virtual void OnConfigInstanceFirstAccessed()
         {
         }
 
+        /// <summary>
+        /// Invoked automatically when a configuration file is created.
+        /// Handles any required setup or initialization related to the new configuration.
+        /// </summary>
         protected virtual void OnConfigAutoCreated()
         {
         }
@@ -172,11 +234,20 @@ namespace Marmary.Libraries.Structure
 
         #region IGlobalConfigEvents Members
 
+        /// <summary>
+        /// Invoked automatically when a configuration file is created.
+        /// Handles any required setup or initialization tasks associated with
+        /// the creation of a new configuration instance.
+        /// </summary>
         void IGlobalConfigEvents.OnConfigAutoCreated()
         {
             OnConfigAutoCreated();
         }
 
+        /// <summary>
+        /// Triggered the first time the configuration instance is accessed.
+        /// Used to perform initialization or setup tasks specific to the configuration lifecycle.
+        /// </summary>
         void IGlobalConfigEvents.OnConfigInstanceFirstAccessed()
         {
             OnConfigInstanceFirstAccessed();

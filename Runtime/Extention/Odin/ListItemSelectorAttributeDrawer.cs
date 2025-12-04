@@ -7,7 +7,7 @@ using Sirenix.Utilities.Editor;
 using UnityEditor;
 using UnityEngine;
 
-namespace Marmary.Libraries.Extention.Odin
+namespace Marmary.Utils.Runtime.Extention.Odin
 {
     /// <summary>
     ///     Custom drawer for the <see cref="ListItemSelectorAttribute" />.
@@ -57,7 +57,7 @@ namespace Marmary.Libraries.Extention.Odin
         /// </summary>
         protected override void Initialize()
         {
-            _isListElement = Property.Parent != null && Property.Parent.ChildResolver is IOrderedCollectionResolver;
+            _isListElement = Property.Parent is { ChildResolver: IOrderedCollectionResolver };
             var isList = !_isListElement;
             var listProperty = isList ? Property : Property.Parent;
             if (listProperty != null)
@@ -138,8 +138,8 @@ namespace Marmary.Libraries.Extention.Odin
             GUIHelper.RequestRepaint();
             Property.Tree.DelayAction(() =>
             {
-                for (var i = 0; i < _baseMemberProperty.ParentValues.Count; i++)
-                    _selectedIndexSetter(_baseMemberProperty.ParentValues[i], index);
+                foreach (var t in _baseMemberProperty.ParentValues)
+                    _selectedIndexSetter(t, index);
             });
         }
 

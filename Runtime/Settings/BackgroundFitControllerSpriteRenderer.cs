@@ -3,7 +3,7 @@ using TheraBytes.BetterUi;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Marmary.Libraries.Settings
+namespace Marmary.Utils.Runtime.Settings
 {
     /// <inheritdoc cref="UnityEngine.MonoBehaviour" />
     /// <summary>
