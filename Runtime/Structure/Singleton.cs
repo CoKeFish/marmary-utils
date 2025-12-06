@@ -11,6 +11,7 @@ namespace Marmary.Utils.Runtime.Structure
     ///     of destroying any instance that already exists, it will override it.
     /// </summary>
     /// <typeparam name="T">Type of the MonoBehaviour.</typeparam>
+    [IgnoreUnityLifecycle]
     public abstract class StaticInstance<T> : MonoBehaviour where T : MonoBehaviour
     {
         #region Properties
