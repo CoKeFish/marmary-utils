@@ -60,13 +60,25 @@ namespace Marmary.Utils.Runtime.UI
 
             #endregion
 
+            /// <summary>
+            /// Initializes the component before it starts interacting with the UI system.
+            /// Subscribes to the event bus for handling menu manager events
+            /// and performs necessary setup steps required by the base implementation.
+            /// </summary>
+            [IgnoreUnityLifecycle]
             protected override void Start()
             {
                 base.Start();
-                _eventBus.Subscribe<SendMenuManagerEvent>(asignMenuManager);
+                _eventBus.Subscribe<SendMenuManagerEvent>(AsignMenuManager);
             }
 
-            private void asignMenuManager(SendMenuManagerEvent eventData)
+            /// <summary>
+            /// Assigns the provided menu manager from the event data to the local field.
+            /// This method is invoked in response to the <see cref="SendMenuManagerEvent"/>
+            /// being dispatched, linking the specified menu manager for future use.
+            /// </summary>
+            /// <param name="eventData">The event data containing the menu manager to assign.</param>
+            private void AsignMenuManager(SendMenuManagerEvent eventData)
             {
                 menuManager = eventData.MenuManager;
             }
