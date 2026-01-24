@@ -58,53 +58,53 @@ namespace DTT.ExtendedDebugLogs
 	}
 	public static class SettingTag
 	{
-		public static Tag Screen => TagContainerCollection.GetContainer("HRTags").GetTag("SettingTag", "Screen");
-		public static Tag Render => TagContainerCollection.GetContainer("HRTags").GetTag("SettingTag", "Render");
-		public static Tag Language => TagContainerCollection.GetContainer("HRTags").GetTag("SettingTag", "Language");
-		public static Tag Audio => TagContainerCollection.GetContainer("HRTags").GetTag("SettingTag", "Audio");
+		public static Tag Screen => TagContainerCollection.GetContainer("Marmary Tags").GetTag("SettingTag", "Screen");
+		public static Tag Render => TagContainerCollection.GetContainer("Marmary Tags").GetTag("SettingTag", "Render");
+		public static Tag Language => TagContainerCollection.GetContainer("Marmary Tags").GetTag("SettingTag", "Language");
+		public static Tag Audio => TagContainerCollection.GetContainer("Marmary Tags").GetTag("SettingTag", "Audio");
 	}
 	public static class FlowControlTag
 	{
-		public static Tag Constructor => TagContainerCollection.GetContainer("HRTags").GetTag("FlowControlTag", "Constructor");
-		public static Tag Setup => TagContainerCollection.GetContainer("HRTags").GetTag("FlowControlTag", "Setup");
-		public static Tag EntryPoint => TagContainerCollection.GetContainer("HRTags").GetTag("FlowControlTag", "EntryPoint");
-		public static Tag Initialization => TagContainerCollection.GetContainer("HRTags").GetTag("FlowControlTag", "Initialization");
-		public static Tag Dispose => TagContainerCollection.GetContainer("HRTags").GetTag("FlowControlTag", "Dispose");
+		public static Tag Constructor => TagContainerCollection.GetContainer("Marmary Tags").GetTag("FlowControlTag", "Constructor");
+		public static Tag Setup => TagContainerCollection.GetContainer("Marmary Tags").GetTag("FlowControlTag", "Setup");
+		public static Tag EntryPoint => TagContainerCollection.GetContainer("Marmary Tags").GetTag("FlowControlTag", "EntryPoint");
+		public static Tag Initialization => TagContainerCollection.GetContainer("Marmary Tags").GetTag("FlowControlTag", "Initialization");
+		public static Tag Dispose => TagContainerCollection.GetContainer("Marmary Tags").GetTag("FlowControlTag", "Dispose");
 	}
 	public static class SaveTag
 	{
-		public static Tag Load => TagContainerCollection.GetContainer("HRTags").GetTag("SaveTag", "Load");
-		public static Tag Save => TagContainerCollection.GetContainer("HRTags").GetTag("SaveTag", "Save");
-		public static Tag Slot => TagContainerCollection.GetContainer("HRTags").GetTag("SaveTag", "Slot");
-		public static Tag AutoSave => TagContainerCollection.GetContainer("HRTags").GetTag("SaveTag", "AutoSave");
+		public static Tag Load => TagContainerCollection.GetContainer("Marmary Tags").GetTag("SaveTag", "Load");
+		public static Tag Save => TagContainerCollection.GetContainer("Marmary Tags").GetTag("SaveTag", "Save");
+		public static Tag Slot => TagContainerCollection.GetContainer("Marmary Tags").GetTag("SaveTag", "Slot");
+		public static Tag AutoSave => TagContainerCollection.GetContainer("Marmary Tags").GetTag("SaveTag", "AutoSave");
 	}
 	public static class UITag
 	{
-		public static Tag Menu => TagContainerCollection.GetContainer("HRTags").GetTag("UITag", "Menu");
-		public static Tag Popup => TagContainerCollection.GetContainer("HRTags").GetTag("UITag", "Popup");
-		public static Tag Widget => TagContainerCollection.GetContainer("HRTags").GetTag("UITag", "Widget");
-		public static Tag Navigation => TagContainerCollection.GetContainer("HRTags").GetTag("UITag", "Navigation");
+		public static Tag Menu => TagContainerCollection.GetContainer("Marmary Tags").GetTag("UITag", "Menu");
+		public static Tag Popup => TagContainerCollection.GetContainer("Marmary Tags").GetTag("UITag", "Popup");
+		public static Tag Widget => TagContainerCollection.GetContainer("Marmary Tags").GetTag("UITag", "Widget");
+		public static Tag Navigation => TagContainerCollection.GetContainer("Marmary Tags").GetTag("UITag", "Navigation");
 	}
 	public static class DITag
 	{
-		public static Tag Scope => TagContainerCollection.GetContainer("HRTags").GetTag("DITag", "Scope");
-		public static Tag Register => TagContainerCollection.GetContainer("HRTags").GetTag("DITag", "Register");
-		public static Tag Resolve => TagContainerCollection.GetContainer("HRTags").GetTag("DITag", "Resolve");
+		public static Tag Scope => TagContainerCollection.GetContainer("Marmary Tags").GetTag("DITag", "Scope");
+		public static Tag Register => TagContainerCollection.GetContainer("Marmary Tags").GetTag("DITag", "Register");
+		public static Tag Resolve => TagContainerCollection.GetContainer("Marmary Tags").GetTag("DITag", "Resolve");
 	}
 	public static class EventTag
 	{
-		public static Tag Publish => TagContainerCollection.GetContainer("HRTags").GetTag("EventTag", "Publish");
-		public static Tag Subscribe => TagContainerCollection.GetContainer("HRTags").GetTag("EventTag", "Subscribe");
+		public static Tag Publish => TagContainerCollection.GetContainer("Marmary Tags").GetTag("EventTag", "Publish");
+		public static Tag Subscribe => TagContainerCollection.GetContainer("Marmary Tags").GetTag("EventTag", "Subscribe");
 	}
 	public static class EditorTag
 	{
-		public static Tag Validation => TagContainerCollection.GetContainer("HRTags").GetTag("EditorTag", "Validation");
-		public static Tag DataBase => TagContainerCollection.GetContainer("HRTags").GetTag("EditorTag", "DataBase");
-		public static Tag Table => TagContainerCollection.GetContainer("HRTags").GetTag("EditorTag", "Table");
+		public static Tag Validation => TagContainerCollection.GetContainer("Marmary Tags").GetTag("EditorTag", "Validation");
+		public static Tag DataBase => TagContainerCollection.GetContainer("Marmary Tags").GetTag("EditorTag", "DataBase");
+		public static Tag Table => TagContainerCollection.GetContainer("Marmary Tags").GetTag("EditorTag", "Table");
 	}
 	public static class ReactiveTag
 	{
-		public static Tag Subscribe => TagContainerCollection.GetContainer("HRTags").GetTag("ReactiveTag", "Subscribe");
-		public static Tag Notify => TagContainerCollection.GetContainer("HRTags").GetTag("ReactiveTag", "Notify");
+		public static Tag Subscribe => TagContainerCollection.GetContainer("Marmary Tags").GetTag("ReactiveTag", "Subscribe");
+		public static Tag Notify => TagContainerCollection.GetContainer("Marmary Tags").GetTag("ReactiveTag", "Notify");
 	}
 }
