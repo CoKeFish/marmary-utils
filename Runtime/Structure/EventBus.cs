@@ -106,9 +106,9 @@ namespace Marmary.Utils.Runtime.Structure
         /// <param name="next">The next action in the processing pipeline, which is invoked after the filter logic is applied.</param>
         public override void Handle(T message, Action<T> next)
         {
-            DebugEx.Log($"BEGIN: Event {typeof(T).Name}", FlowControlTag.Event);
+            DebugEx.Log($"BEGIN: Event {typeof(T).Name}", EventTag.Publish);
             next(message);
-            DebugEx.Log($"END: Event {typeof(T).Name}", FlowControlTag.Event);
+            DebugEx.Log($"END: Event {typeof(T).Name}", EventTag.Publish);
         }
 
         #endregion
