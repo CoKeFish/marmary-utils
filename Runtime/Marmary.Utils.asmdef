@@ -4,6 +4,7 @@
   "references": [
     "GUID:f51ebe6a0ceec4240a699833d6309b23",
     "GUID:f12dc9607000b3e43b157143c4b19670",
+    "DTT.ExtendedDebugLogs.Unity",
     "GUID:08b38f39e2d9e594389b7a4cf4c2c338",
     "GUID:4f682e06dbb3e624faedad9cc27106cc",
     "GUID:b0214a6008ed146ff8f122a6a9c2f6cc",
